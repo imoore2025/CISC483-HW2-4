@@ -1,0 +1,72 @@
+Gold Mining Class - 2025 Spring
+Homework 2 – Association Rule Mining
+Due: Tue, Feb 25, 11:59 PM
+Description
+Imagine you want to recommend new products to a customer based on the products they have already browsed online. Write a program using the A-priori algorithm to find products that are frequently browsed together. Fix the support to s =100 (i.e., product pairs need to occur together at least 100 times to be considered frequent) and find itemsets of sizes 2 and 3. 
+
+Using Spark is optional. If you choose Spark, that’s super! Keep in mind, however, that you should be able to do all Spark-related programming by yourself (not that hard, just a reminder). Our autograder also “may not” support Spark. You can just email your submission (preferably a Colab link with a last change before the deadline) to us: rbi@ and mfarhan@udel.edu. 
+
+Data
+Use the online browsing behavior dataset from this text file. Each line represents a customer's browsing session. On each line, each string of 8 characters represents the ID of an item browsed during that session. The items are separated by spaces. Some lines contain duplicate items. Removing or ignoring duplicates should not impact your results. 
+
+Description
+Your program needs to identify pairs (X, Y) and triples (X, Y, Z) of items such that the support of pair or triple itemset is at least 100. For all such itemsets, compute the confidence scores of the corresponding association rules. This means that for the pairs, you need to compute for X ⇒ Y and Y ⇒ X, and for the triples, you need to compute for (X, Y) ⇒ Z, (X, Z) ⇒ Y, and (Y, Z) ⇒ X. Sort the rules in decreasing order of confidence scores. Break ties, if any, by lexicographically increasing order on the left-hand side of the rule (and moving to the right). 
+
+Input and Output
+Your program needs to receive a rule in the format of either “XY” or “XYZ”, where “XY” indicates X ⇒ Y and “XYZ” indicates X, Y ⇒ Z rules. The output for each input rule should be two numbers: first, the confidence value for that rule, and second, the ranking for that, separated by a comma. The ranking is calculated among all pairs or triples separately. If the input rule does not exist in the list of generated rules, your output should be an “NA”. 
+
+Sanity checks 
+There are 647 frequent items after the first pass (|L1| = 647), 
+The top 5 pairs you should produce for the pairs all have confidence scores greater than 0.985. 
+
+Test Cases 
+Input:			DAI93865FRO40251
+Output:		1.0 , 1
+
+Input:			ELE12951FRO40251
+Output:		0.9905660377358491 , 4
+
+Input:			FRO92469FRO40251
+Output:		0.983510011778563 , 6
+
+Input:			GRO81647GRO73461
+Output:		0.6775510204081633 , 14
+
+Input:			FRO73056GRO44993
+Output:		0.6016483516483516 , 19
+
+Input:			DAI23334ELE92920DAI62779
+Output:		1.0 , 1
+
+Input:			ELE17451FRO92469FRO40251
+Output:		0.9818181818181818 , 22
+
+Input:			DAI55148FRO92469FRO40251
+Output:		0.9722222222222222 , 26
+
+Input:			ELE92920SNA18336DAI62779
+Output:		0.9494505494505494 , 29
+
+Input:			ELE17451SNA18336DAI62779
+Output:		0.9138576779026217 , 32
+
+
+Submission Guidelines
+Copy this Colab Notebook to your drive. It contains a skeleton code with instructions. Read the instructions properly and complete the methods as instructed. The method signatures and some initialization parts are already given. 
+After you are done coding, copy the designated code from the notebook to a Python file named ‘solution.py’ according to the instructions given in the notebook. Submit this to Gradescope for automatic grading.
+Do not change the method names as they are called inside of the testing method.
+The eval method of the code is the main output provider, and it will be tested in Gradescope. Make sure the output formatting is correct. You can test all the test cases to see if the code is correct before submitting it to Gradescope.  
+Notes
+Integrity policy
+Please read our course policy again. We will check for similarities between the submissions (including the previous submissions and manually submitted ones by the instructors). To ensure our course remains fair to everyone, we will proactively and carefully check for any suspicious pattern that violates our policy. As we have done this in the past, we will certainly escalate and report any violation to the appropriate contacts at UD. Sharing or using a shared code is prohibited. Our course policy is simple: your code, in its entirety, MUST be yours. You can talk to others about the algorithm(s) to be used to solve a homework problem as long as you then mention their name(s) on the work you submit. Borrowing a few lines of code is fine (say from StackOverflow), but again, you must acknowledge the source. 
+ 
+Grading
+The total points will be 100. You will lose 5 points per failed test case. 
+You will also receive partial credit even if your code passes none of the test cases (up to 50 points). Make your code clean to increase the chance of partial credit. 
+ 
+Questions?
+Please post them on Ed, and consider responding to your classmates’ questions. 
+We’re still working on the GradeScope tuning; let us know if you have any issues. 
+
+
+
